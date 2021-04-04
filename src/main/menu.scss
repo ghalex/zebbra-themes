@@ -1,0 +1,52 @@
+@use 'theme';
+@use 'sass:color';
+@use "sass:map";
+
+$borderColor: map.get(theme.$colors, 'main');
+$bgColor: lighten($borderColor, 10%);
+$radius: map.get(theme.$sizes, 'radius');
+
+.z-menu {
+  position: relative;
+  border-radius: $radius;
+}
+
+.z-menu-items {
+  min-width: auto;
+  position: absolute;
+  background-color: white;
+  border: 2px solid $borderColor;
+  border-radius: $radius;
+  box-shadow: map.get(theme.$shadows, 'normal');
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.z-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  white-space: nowrap;
+
+  &[disabled],
+  &[aria-disabled='true'] {
+    color: #ccc;
+  }
+}
+
+.z-menu-item:not(:last-child) {
+  // border-bottom: 2px solid var(--border-color);
+}
+
+.z-menu-item:hover {
+  color: white;
+  cursor: pointer;
+  background-color: $bgColor;
+}
+
+.z-menu-separator {
+  background-color: $borderColor;
+  flex: 1;
+  width: 100%;
+  height: 2px;
+}

@@ -1,0 +1,20 @@
+
+$colors: (
+  "main": #4a5568,
+  "primary": #6b46c1,
+  "success": #2f855a,
+  "danger": #c53030,
+  "white": white,
+  "black": black
+);
+
+$shadows: (
+  'small': 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+  'normal': (0 1px 3px 0 rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.08)),
+  'large': (0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08))
+);
+
+$sizes: (
+  'radius': 8px,
+  'height': 40px
+)

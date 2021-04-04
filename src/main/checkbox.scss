@@ -1,0 +1,68 @@
+@use 'theme';
+@use 'sass:color';
+@use "sass:map";
+@use "sass:math";
+
+@mixin checkbox($colorName) {
+  $color: map.get(theme.$colors, $colorName);
+
+  border: 2px $color solid;
+  border-radius: map.get(theme.$sizes, 'radius') / 2;
+
+  &:checked,
+  &[aria-checked='true'] {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTRweCIgaGVpZ2h0PSIxMHB4IiB2aWV3Qm94PSIwIDAgMTQgMTAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICAgICAgICA8ZyBpZD0iRWxlbWVudHMvQ2hlY2ttYXJrIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNC4wMDAwMDAsIC02LjAwMDAwMCkiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIj4KICAgICAgICAgICAgPGcgaWQ9IkNoZWNrIj4KICAgICAgICAgICAgICAgIDxwb2x5bGluZSBpZD0iTGluZSIgcG9pbnRzPSI1LjY5NjI2NDUyIDExLjI2NjkwNzMgOS4yMzE1Mjg2OCAxNC44MDIxNzE1IDE2LjMwMjA1NyA3LjczMTY0MzEyIj48L3BvbHlsaW5lPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=');
+    background-color: lighten($color, $amount: 20%);
+  }
+}
+
+.z-checkbox {
+  $size: math.ceil(map.get(theme.$sizes, 'height') * 0.55);
+
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  margin-right: 5px;
+  background-color: white;
+  width: $size;
+  height: $size;
+
+  @include checkbox('main');
+
+
+  &:checked,
+  &[aria-checked='true'] {
+    $bgSize: math.ceil($size * 0.6);
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    background-size: $bgSize $bgSize;
+  }
+
+  &.small {
+    $smallSize: math.ceil($size * 0.8);
+
+    width: $smallSize;
+    height: $smallSize;
+  
+    &:checked,
+    &[aria-checked='true'] {
+      $bgSize: math.ceil($smallSize * 0.55);
+      background-size: $bgSize $bgSize;
+    }
+  }
+}
+
+.z-checkbox.primary {
+  @include checkbox('primary');
+}
+
+.z-checkbox.success {
+  @include checkbox('success');
+}
+
+.z-checkbox.danger {
+  @include checkbox('danger');
+}

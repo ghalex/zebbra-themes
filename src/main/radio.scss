@@ -1,0 +1,70 @@
+@use 'theme';
+@use 'sass:color';
+@use "sass:map";
+@use "sass:math";
+
+.z-radio {
+  $borderColor: map.get(theme.$colors, 'main');
+  $bgColor: lighten($borderColor, $amount: 10%);
+  $icon: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjaXJjbGUiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iIzRhNTU2OCIgZD0iTTI1NiA4QzExOSA4IDggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDhTMzkzIDggMjU2IDh6IiBjbGFzcz0iIj48L3BhdGg+PC9zdmc+');
+  $size: math.ceil(map.get(theme.$sizes, 'height') * 0.55);
+
+  appearance: none;
+  border: 2px $borderColor solid;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+  width: $size;
+  height: $size;
+  display: inline-flex;
+  margin-right: 5px;
+
+
+  &:checked,
+  &[aria-checked='true'] {
+    $bgSize: math.ceil($size * 0.6);
+
+    background-image: $icon;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: $bgSize $bgSize;
+  }
+
+  &.small {
+    $smallSize: math.ceil($size * 0.8);
+
+    width: $smallSize;
+    height: $smallSize;
+  
+    &:checked,
+    &[aria-checked='true'] {
+      $bgSize: math.ceil($smallSize * 0.55);
+      background-size: $bgSize $bgSize;
+    }
+  }
+}
+
+.z-radio.primary {
+  $borderColor: map.get(theme.$colors, 'primary');
+  $icon: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjaXJjbGUiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iIzZiNDZjMSIgZD0iTTI1NiA4QzExOSA4IDggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDhTMzkzIDggMjU2IDh6IiBjbGFzcz0iIj48L3BhdGg+PC9zdmc+');
+
+  border: 2px $borderColor solid;
+
+  &:checked,
+  &[aria-checked='true'] {
+    background-image: $icon;
+  }
+}
+
+.z-radio.danger {
+  $borderColor: map.get(theme.$colors, 'danger');
+  $icon: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjaXJjbGUiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iI2M1MzAzMCIgZD0iTTI1NiA4QzExOSA4IDggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDhTMzkzIDggMjU2IDh6IiBjbGFzcz0iIj48L3BhdGg+PC9zdmc+');
+
+  border: 2px $borderColor solid;
+
+  &:checked,
+  &[aria-checked='true'] {
+    background-image: $icon;
+  }
+}
+

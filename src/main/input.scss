@@ -1,0 +1,45 @@
+@use 'theme';
+@use 'sass:color';
+@use "sass:map";
+
+
+@mixin input($colorName) {
+  $color: map.get(theme.$colors, $colorName);
+
+  color: $color;
+  height: map.get(theme.$sizes, 'height');
+  border: 2px solid $color;
+  border-radius: map.get(theme.$sizes, 'radius');
+  box-shadow: map.get(theme.$shadows, 'normal');
+
+  &::placeholder {
+    color: color.adjust($color, $alpha: -0.6);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2em color.adjust($color, $alpha: -0.8);
+  }
+
+  &:disabled {
+    background-color: color.adjust($color, $alpha: -0.6);
+  }
+}
+
+.z-input {
+  padding: 0.25rem 0.5rem;
+  @include input($colorName: 'main');
+}
+
+
+.z-input.primary {
+  @include input($colorName: 'primary');
+}
+
+.z-input.success {
+  @include input($colorName: 'success');
+}
+
+.z-input.danger {
+  @include input($colorName: 'danger');
+}

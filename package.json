@@ -1,0 +1,18 @@
+{
+  "name": "@zebbra/themes",
+  "version": "1.0.1",
+  "description": "Zebbra themes",
+  "main": "index.js",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "start": "sass src:dist/ --watch",
+    "build": "sass src:dist/ "
+  },
+  "author": "Alexandru Ghiura",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.32.8"
+  }
+}

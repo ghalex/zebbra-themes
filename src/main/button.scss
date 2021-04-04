@@ -1,0 +1,70 @@
+@use 'theme';
+@use 'sass:color';
+@use "sass:map";
+
+@mixin btn($colorName, $bgColorName, $borderColorName) {
+  $color: map.get(theme.$colors, $colorName);
+  $bgColor: map.get(theme.$colors, $bgColorName);
+  $borderColor: map.get(theme.$colors, $borderColorName);
+  $focusColor: color.adjust($borderColor, $alpha: -0.8);
+
+  color: $color;
+  background-color: $bgColor;
+  border-color: $borderColor;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2em $focusColor;
+  }
+
+  /* Hover State */
+  &:hover:not([disabled]),
+  &:hover:not([aria-disabled='true']) {
+    color: $bgColor;
+    background-color: $color;
+  }
+
+  &[aria-pressed='true'] {
+    box-shadow: 0 0 0 0.4em $focusColor;
+  }
+}
+
+.z-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.5s ease;
+  height: map.get(theme.$sizes, 'height');
+  position: relative;
+  text-transform: uppercase;
+  border: 2px solid;
+  user-select: none;
+  text-decoration: none;
+  padding: 0 1.5rem;
+  border-radius: map.get(theme.$sizes, 'radius');
+  box-shadow: map.get(theme.$shadows, 'normal');
+
+  @include btn('main', 'white', 'main');
+
+  /* Disabled State */
+  &[disabled],
+  &[aria-disabled='true'] {
+    opacity: 0.5;
+  }
+}
+
+.z-btn.primary {
+  @include btn($colorName: 'white', $bgColorName: 'primary', $borderColorName: 'primary');
+}
+
+.z-btn.success {
+  @include btn($colorName: 'white', $bgColorName: 'success', $borderColorName: 'success');
+}
+
+.z-btn.danger {
+  @include btn($colorName: 'white', $bgColorName: 'danger', $borderColorName: 'danger');
+}

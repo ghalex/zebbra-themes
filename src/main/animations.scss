@@ -1,0 +1,16 @@
+.zb-fade-enter-active,
+.zb-fade-leave-active {
+  transition: all 0.15s ease-out;
+}
+
+.zb-fade-to-from,
+.zb-fade-leave-from {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zb-fade-enter-from,
+.zb-fade-leave-to {
+  transform: scale(0.9, 0.9);
+  opacity: 0;
+}
