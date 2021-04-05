@@ -9,10 +9,10 @@ $radius: map.get(theme.$sizes, 'radius');
 .z-menu {
   position: relative;
   border-radius: $radius;
+
 }
 
 .z-menu-items {
-  min-width: auto;
   position: absolute;
   background-color: white;
   border: 2px solid $borderColor;

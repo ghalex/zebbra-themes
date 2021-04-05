@@ -1,0 +1,42 @@
+@use 'theme';
+@use 'sass:color';
+@use "sass:map";
+
+@mixin select($colorName) {
+  $color: map.get(theme.$colors, $colorName);
+  $focusColor: color.adjust($color, $alpha: -0.8);
+  color: $color;
+  border: 2px solid $color;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2em $focusColor;
+  }
+}
+
+.z-select {
+  $color: map.get(theme.$colors, 'main');
+  $radius: map.get(theme.$sizes, 'radius');
+  $focusColor: color.adjust($color, $alpha: -0.8);
+
+  appearance: none;
+  background-color: white;
+  border-radius: $radius;
+  box-shadow: map.get(theme.$shadows, 'normal');
+  height: map.get(theme.$sizes, 'height');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2EwYWVjMCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCI+PHBhdGggZD0iTTcuNDEgOC41OUwxMiAxMy4xN2w0LjU5LTQuNThMMTggMTBsLTYgNi02LTYgMS40MS0xLjQxeiIvPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMFYweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==');
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 22px auto, 100%;
+  padding: 6px 32px 6px 16px;
+  
+  @include select('main');
+}
+
+.z-select.primary {
+  @include select('primary');
+}
+
+.z-select.danger {
+  @include select('danger');
+}
