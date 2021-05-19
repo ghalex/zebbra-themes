@@ -7,10 +7,7 @@
   $color: map.get(theme.$colors, $colorName);
 
   color: $color;
-  height: map.get(theme.$sizes, 'height');
   border: 2px solid $color;
-  border-radius: map.get(theme.$sizes, 'radius');
-  box-shadow: map.get(theme.$shadows, 'normal');
 
   &::placeholder {
     color: color.adjust($color, $alpha: -0.6);
@@ -28,6 +25,10 @@
 
 .z-input {
   padding: 0.25rem 0.5rem;
+  height: map.get(theme.$sizes, 'height');
+  border-radius: map.get(theme.$sizes, 'radius');
+  box-shadow: map.get(theme.$shadows, 'normal');
+
   @include input($colorName: 'main');
 }
 
